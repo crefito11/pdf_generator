@@ -1,0 +1,20 @@
+{
+    "name": "crefito11/pdf_generator",
+    "description": "Cria documentos baseados em parametros e templates",
+    "type": "library",
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    },
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Crefito11\\PdfGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rubens Júnior",
+            "email": "rubens.jr107@gmail.com"
+        }
+    ]
+}
