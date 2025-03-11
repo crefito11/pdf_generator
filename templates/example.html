@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <style>
+        @page{
+            size: A4;
+            margin: 0;
+        }
+        h2 { 
+            color: #333;
+            text-align: center
+        }
+        p { font-size: 14px; }
+        body{
+            background: url('https://crefito11.gov.br/arquivos/timbrado.png');
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+        header{
+            margin-top: 240px;
+        }
+        main{
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        footer{
+            margin-bottom: 280px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <main>
+        <h2>{{title}}</h2>
+        <table style="width:100%">
+            <tr>
+                <td>Nome: {{nome}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Estado civil: {{estado_civil}}</td>
+                <td>Gênero: {{genero}}</td>
+                <td>Nascimento: {{data_nascimento}}</td>
+            </tr>
+        </table>
+    </main>
+    <footer></footer>
+</body>
+</html>
