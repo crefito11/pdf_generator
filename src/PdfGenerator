@@ -1,0 +1,43 @@
+<?php
+
+namespace Crefito11\PdfGenerator;
+
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Crefito11\PdfGenerator\TemplateRenderer;
+
+class PdfGenerator
+{
+    private $renderer;
+    private $outputPath;
+
+    public function __construct(TemplateRenderer $renderer, string $outputPath = 'public/files/')
+    {
+        $this->renderer = $renderer;
+        $this->outputPath = rtrim($outputPath, '/') . '/';
+
+        if (!is_dir($this->outputPath)) {
+            mkdir($this->outputPath, 0777, true);
+        }
+    }
+
+    public function generatePdf($fileName = 'document.pdf'): string
+    {
+        $options = new Options();
+        $options->set('defaultFont', 'Arial');
+        $options->setIsRemoteEnabled(true);
+        $options->setChroot(__DIR__);
+
+        $dompdf = new Dompdf($options);
+        $html = $this->renderer->render();
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $filePath = $this->outputPath . $fileName;
+        file_put_contents($filePath, $dompdf->output());
+
+        return $filePath;
+    }
+}
